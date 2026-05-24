@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cart</title>
+    <title>Shopping Cart</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
-<body class="container mt-4">
-    <h1>Your Cart</h1>
-    @if(session('cart'))
-    <table class="table">
+<body class="container mt-5">
+    <h1 class="mb-4">Shopping Cart</h1>
+
+    <table class="table table-bordered">
         <tr>
             <th>Image</th>
             <th>Name</th>
@@ -19,33 +19,35 @@
             <th>Total</th>
             <th>Action</th>    
         </tr>
-    @php $total = 0; @endphp
-    @foreach(session('cart') as $id => $item)
+    @php $grandTotal = 0; @endphp
+    @foreach(session('cart', []) as $id => $item)
     
-    @php $total += $item['price'] * $item['qty']; @endphp
+    @php $total = $item['price'] * $item['qty']; 
+         $grandTotal += $total;
+    @endphp
     <tr>
         <td>
-            <img src="{{ asset('storage/' .$item['image']) }}" width="60">
+            <img src="{{ asset('storage/' .$item['image']) }}" width="80">
         </td>
         <td>{{ $item['name'] }}</td>
         <td>{{ $item['price'] }}</td>
         <td>{{ $item['qty'] }}</td>
-        <td>${{ $item['price'] * $item['qty'] }}</td>
+        <td>${{ $total }}</td>
         <td>
-            <form method="POST" action="{{ url('/cart/remove/' .$id) }}">
-                @csrf
-                <button class="btn btn-danger btn-sm"> Remove</button>
-            </form>
+            <a href="{{ route('cart.remove', $id) }}" 
+                class="btn btn-danger">Remove</a>
         </td>
     </tr>
     @endforeach
     </table>   
-    <h2>Total: ${{ $total }}</h2>
+    <h2>Grand Total: ${{ $grandTotal }}</h2>
 
-    <a href="{{ url('/checkout') }}"
-        class="btn btn-primary"> Checkout</a>
-    @else
-        <p>Your cart is empty</p>
-    @endif
+    <a href="/"
+        class="btn btn-dark"> Continue Shopping
+    </a>
+
+    <a href="{{ route('checkout') }}"
+        class="btn btn-success">Checkout
+    </a>
 </body>
 </html>

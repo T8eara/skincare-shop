@@ -9,28 +9,26 @@
 </head>
 <body class="container mt-5">
     <h1 class="mb-4">Checkout</h1>
-    <form action="{{ url('/checkout') }}">
+    <form action="{{ route('checkout.store') }}"
+          method="POST">
         @csrf
 
         <div class="mb-3">
             <label>Name</label>
             <input type="text"
                     name="customer_name"
-                    class="form-control"
-                    required>
+                    class="form-control">
         </div>
         <div class="mb-3">
             <label>Phone</label>
             <input type="text"
                     name="phone"
-                    class="form-control"
-                    required>
+                    class="form-control">
         </div>
         <div class="mb-3">
             <label>Address</label>
             <textarea name="address"
-                      class="form-control"
-                      required></textarea>
+                      class="form-control"></textarea>
         </div>
         <button class="btn btn-success">Place Order</button>
     </form>

@@ -10,8 +10,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $cart = session()->get('cart', []);
-        return view('front.cart', compact('cart'));
+        return view('front.cart');
     }
 
     public function add($id){
@@ -30,15 +29,17 @@ class CartController extends Controller
         }
         session()->put('cart', $cart);
 
-        return redirect()->back();
+        return back()->with(
+            'success','Product added to cart'
+        );
     }
 
     public function remove($id){
-        $cart = sesion()->get('cart', []);
+        $cart = session()->get('cart');
 
         unset($cart[$id]);
 
         session()->put('cart', $cart);
-        return redirect()->back();
+        return back();
     }
 }

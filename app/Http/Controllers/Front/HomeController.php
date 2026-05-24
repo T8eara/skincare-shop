@@ -10,23 +10,58 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(Request $request)
+{
+    $request->validate([
+
+        'min_price' => 'nullable|numeric|min:0',
+
+        'max_price' => 'nullable|numeric|gte:min_price'
+
+    ]);
+
+    $query = Product::query();
+
+    if($request->search)
     {
-        $query = Product::with('category');
+        $query->where(function($q) use ($request){
 
-        if ($request->category){
-            $query->where('category_id', $request->category);
-        }
+            $q->where('name',
+                      'like',
+                      '%'.$request->search.'%')
 
-        if ($request->min_price && $request->max_price){
-            $query->whereBetween('price',[
-                $request->min_price,
-                $request->max_price
-            ]);
-        }
+              ->orWhere('description',
+                        'like',
+                        '%'.$request->search.'%');
 
-        $products = $query->get();
-        $categories = Category::all();
-
-        return view('front.home', compact('products', 'categories'));
+        });
     }
+
+    if($request->category)
+    {
+        $query->where('category_id',
+                      $request->category);
+    }
+
+    if($request->min_price)
+    {
+        $query->where('price',
+                      '>=',
+                      $request->min_price);
+    }
+
+    if($request->max_price)
+    {
+        $query->where('price',
+                      '<=',
+                      $request->max_price);
+    }
+
+    $products = $query->paginate(8);
+
+    $categories = Category::all();
+
+    return view('front.home',
+                compact('products',
+                        'categories'));
+}
 }
