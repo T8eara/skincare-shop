@@ -24,7 +24,9 @@ RUN composer install
 
 # Generate storage link
 RUN php artisan storage:link || true
-
+RUN touch database/database.sqlite
+RUN chmod -R 777 database
+RUN chmod -R 777 storage
 EXPOSE 10000
 
 CMD php artisan serve --host=0.0.0.0 --port=10000
