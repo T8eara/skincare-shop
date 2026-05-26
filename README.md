@@ -50,6 +50,17 @@ Database name:
 skincare_db
 ```
 
+Database Connection
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=skincare_db
+DB_USERNAME=root
+DB_PASSWORD=root123
+```
+
 Import database or run migrations:
 
 ```bash

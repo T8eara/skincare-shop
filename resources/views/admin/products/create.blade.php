@@ -14,9 +14,9 @@
            name="price"
            class="form-control mb-3" 
            placeholder="Price">
-    <textarea name="description" 
+    <input name="description" 
               class="form-control mb-3" 
-              placeholder="Description"></textarea>
+              placeholder="Description"></input>
     <input type="file"
            name="image"
            class="form-control mb-3">
