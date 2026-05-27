@@ -1,58 +1,126 @@
 # Skincare Shop Website
 
-A dynamic skincare ecommerce website built with Laravel, MySQL, Bootstrap, and Docker.
+A Laravel + MySQL skincare ecommerce website with Front Office and Admin Dashboard.
 
 ---
 
-## Features
-
-### Front Office
-
-- Product listing
-- Product detail page
-- Search products
-- Filter by category
-- Filter by price
-- Shopping cart
-- Wishlist
-- Checkout system
-- Order history
-
-### Admin Dashboard
-
-- Manage products
-- Manage categories
-- Manage orders
-- Dashboard statistics
-
-### Authentication
-
-- Login/Register system
-- Protected admin routes
-
----
-
-## Technologies Used
+# Technologies Used
 
 - Laravel 13
 - PHP 8.3
 - MySQL
 - Bootstrap 5
+- HTML/CSS
 - Docker
 
 ---
 
-## Database Setup
+# Website Links
 
-Database name:
+## Front Website
+
+http://127.0.0.1:8000/
+
+## Login
+
+http://127.0.0.1:8000/login
+
+## Register
+
+http://127.0.0.1:8000/register
+
+## Admin Dashboard
+
+http://127.0.0.1:8000/admin/dashboard
+
+---
+
+# Admin Account
+
+Email:
+[slenarrt.admin1223@group3.com]
+
+Password:
+Slenarrt520
+
+---
+
+# User Features
+
+- View skincare products
+- Search products
+- Filter by category
+- Filter by price
+- Product details page
+- Add to cart
+- Wishlist
+- Checkout
+
+---
+
+# Admin Features
+
+- Admin dashboard
+- Add products
+- Edit products
+- Delete products
+- Manage categories
+- Manage orders
+
+---
+
+# Installation
+
+## Clone Project
 
 ```bash
+git clone https://github.com/T8eara/skincare-shop.git
+```
+
+---
+
+# Enter Project
+
+```bash
+cd skincare-shop
+```
+
+## Install Dependencies
+
+```bash
+composer install
+npm install
+```
+
+---
+
+## Environment Setup
+
+Copy .env.example
+
+```bash
+cp .env.example .env
+```
+
+Generate app key
+
+```bash
+php artisan key:generate
+```
+
+---
+
+# Database Setup
+
+Create database:
+
+```text
 skincare_db
 ```
 
-Database Connection
+Update .env:
 
-```bash
+```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3307
@@ -61,7 +129,7 @@ DB_USERNAME=root
 DB_PASSWORD=root123
 ```
 
-Import database or run migrations:
+# Run migration:
 
 ```bash
 php artisan migrate
@@ -69,57 +137,11 @@ php artisan migrate
 
 ---
 
-## Installation Steps
-
-### 1. Clone Project
-
-```bash
-git clone https://github.com/T8eara/skincare-shop.git
-```
-
-### 2. Enter Project
-
-```bash
-cd skincare-shop
-```
-
-### 3. Install Dependencies
-
-```bash
-composer install
-```
-
-### 4. Copy Environment File
-
-```bash
-cp .env.example .env
-```
-
-### 5. Generate App Key
-
-```bash
-php artisan key:generate
-```
-
-### 6. Run Migration
-
-```bash
-php artisan migrate
-```
-
-### 7. Storage Link
+# Storage Link
 
 ```bash
 php artisan storage:link
 ```
-
-### 8. Start Server
-
-```bash
-php artisan serve
-```
-
----
 
 ## Docker
 
@@ -129,20 +151,28 @@ Start Docker containers:
 docker compose up -d
 ```
 
----
-
-## Admin Login
-
-Register a user account first.
-
-Then access:
+# Start Server
 
 ```bash
-/admin/dashboard
+php artisan serve
+```
+
+Open:
+
+```text
+http://127.0.0.1:8000
 ```
 
 ---
 
-## Author
+# Notes!!!
 
-Student Final Project - Royal University of Phnom Penh
+- Register creates a normal user account.
+- Use admin account above to access admin dashboard.
+- Admin can manage products, categories, and orders.
+
+---
+
+# Project Preview
+
+Frontend Ecommerce Website + Admin Dashboard for skincare products.

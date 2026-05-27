@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 </head>
 <body class="container mt-5">
+    <a href="/admin/dashboard" class="btn btn-dark mb-3">
+    ← Back Dashboard
+    </a>
     <h1 class="mb-4">Customer Orders</h1>
     <table>
        <thead>

@@ -64,4 +64,11 @@ class HomeController extends Controller
                 compact('products',
                         'categories'));
 }
+public function show($id)
+{
+    $product = Product::findOrFail($id);
+
+    return view('front.detail',
+                compact('product'));
+}
 }

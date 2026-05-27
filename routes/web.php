@@ -21,10 +21,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/', function () {
+//     return redirect('/admin/dashboard');
+// });
 Route::post('/cart/add/{id}',[CartController::class, 'add']) ->name('cart.add');
 Route::get('/cart',[CartController::class, 'index']) ->name('cart.index');
 Route::get('/cart/remove/{id}',[CartController::class, 'remove'])->name('cart.remove');

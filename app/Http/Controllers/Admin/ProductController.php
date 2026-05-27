@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -73,11 +73,13 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        $product->update($request->all());
-        return redirect()->route('products.index');
-    }
+    public function update(Request $request, Product $product)
+{
+    $product->update($request->all());
+
+    return redirect()->route('products.index')
+                     ->with('success', 'Product Updated');
+}
 
     /**
      * Remove the specified resource from storage.

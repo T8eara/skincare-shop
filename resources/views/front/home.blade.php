@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Skincare Shop</title>
-    <link rel="stylesheet" 
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+             rel="stylesheet" >
     <style>
         body{
             background:#f8f9fa;
@@ -91,12 +91,14 @@
                     <a  class="nav-link"
                         href="{{ route('orders') }}">Orders</a>    
                 </li>
-                @auth
-                <li class="nav-item">
-                    <a  class="nav-link"
-                        href="/admin/dashboard">Admin</a>    
-                </li>
-                @endauth
+                @if(auth()->check() && auth()->user()->role == 'admin')
+                    <li class="nav-item">
+                         <a class="nav-link"
+                            href="/admin/dashboard">
+                            Admin
+                        </a>
+                    </li>  
+                @endif
             </ul>    
         </div>
         <a href="{{ url('/cart') }}" class="btn btn-dark "> View Cart</a>
